@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+@font-face {
+    font-family: fontLight;
+    src: url(../fonts/Lausanne-300.woff2);
+}
+@font-face {
+    font-family: fontBold;
+    src: url(../fonts/Lausanne-500.woff2);
+}
+*{
+    color:white;
+}
