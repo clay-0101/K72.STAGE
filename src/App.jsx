@@ -7,7 +7,6 @@ import Agence from './PAGES/Agence'
 const App = () => {
   return (
     <div >
-
       <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='/projects' element={<Project/>} />
