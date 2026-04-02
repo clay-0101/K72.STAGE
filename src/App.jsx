@@ -12,7 +12,7 @@ const App = () => {
 
 
   return (
-    <div >
+    <div className='bg-white h-screen w-full'>
 
       <Routes>
         <Route path='/' element={<Home />} />
