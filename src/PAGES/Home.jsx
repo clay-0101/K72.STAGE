@@ -13,7 +13,7 @@ const Home = () => {
         <div className='h-screen w-screen flex flex-col justify-between relative overflow-hidden '>
            <HomeHeroText/> 
            <HomeBottomText/>
-           {/* <MontrealClock/> */}
+           <MontrealClock/>
            
         </div>
     </div>

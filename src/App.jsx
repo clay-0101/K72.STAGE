@@ -3,6 +3,7 @@ import { Route, Routes, Link } from 'react-router-dom'
 import Home from './PAGES/Home'
 import Project from './PAGES/Project'
 import Agence from './PAGES/Agence'
+import Navbar from './COMPONENTS/navigation/Navbar'
 
 
 
@@ -12,8 +13,8 @@ const App = () => {
 
 
   return (
-    <div className='bg-white h-screen w-full'>
-
+    <div className='h-screen w-full'>
+        <Navbar/>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/projects' element={<Project />} />

@@ -49,7 +49,7 @@ const Agence = () => {
   })
   return (
     <div className='h-screen'>
-      <div className='section1 '>
+      <div className='section1 py-1'>
 
         <div ref={imageDivRef} className='h-[20vw] w-[15vw]  absolute top-[15vw] left-[30vw]'>
           <div className='h-full w-full rounded-3xl overflow-hidden'>
@@ -57,9 +57,9 @@ const Agence = () => {
           </div>
         </div>
 
-        <div className='font-[fontBold]  relative'>
+        <div className='font-[fontBold] relative'>
           <div className='mt-[55vh]'>
-            <h1 className='text-[20vw] uppercase leading-[17.5vw] text-center'>Soixan7e Douze</h1>
+            <h1 className='text-[20vw]  uppercase leading-[17.5vw] text-center'>Soixan7e Douze</h1>
           </div>
           <div className='pl-[36%] pr-5'>
             <p className='text-[3.5rem] leading-[1]'>
