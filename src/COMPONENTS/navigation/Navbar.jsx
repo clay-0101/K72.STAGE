@@ -2,6 +2,7 @@ import { useGSAP } from '@gsap/react'
 import { useRef } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useState } from 'react'
+import FullScreenNav from './FullScreenNav'
 
 const Navbar = () => {
     const GreenNav = useRef(null)
@@ -19,6 +20,9 @@ const Navbar = () => {
             </div>
 
             <div
+            onClick={()=>{
+                console.log('you clicked the side navbar')
+            }}
              onMouseEnter={()=>{
                 GreenNav.current.style.height = '100%'
                 setBgColor('black')
