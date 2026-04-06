@@ -2,6 +2,7 @@ import { useGSAP } from '@gsap/react'
 import React from 'react'
 import gsap from 'gsap'
 import { useRef } from 'react'
+import MontrealClock from '../home/MontRealClock'
 
 const FullScreenNav = () => {
 
@@ -22,14 +23,14 @@ const FullScreenNav = () => {
         {
             title: 'CONTACT',
             movingText1: 'Pour envoyer un fax ',
-            imgSrc1: '/navimg1.png',
-            imgSrc2: '/navimg1.png'
+            imgSrc1: '/navimg3.svg',
+            imgSrc2: '/navimg3.svg'
         },
         {
             title: 'BLOGUE',
             movingText1: 'Lire les articles ',
             imgSrc1: '/navimg4.jpg',
-            imgSrc2: '/navimg4.jpg'
+            imgSrc2: '/navimg5.gif'
         }
     ]
     const MouseEnterHandler = (e) => {
@@ -83,7 +84,7 @@ const FullScreenNav = () => {
 
 
     return (
-        <div className='pt-[1px] bg-black h-screen'>
+        <div className='pt-[1px] bg-black h-screen '>
             <div className=' mt-[12vw]'>
                 {arrOfRows.map((elem, idx) => {
                     return <div
@@ -96,22 +97,22 @@ const FullScreenNav = () => {
                         <h1 className='text-[8.5vw] text-center text-white leading-[8.5vw]'>{elem.title}</h1>
                         <div className='runningText   flex overflow-x-auto text-nowrap items-center bg-[#D3FD50] top-[0]  absolute h-[0%] uppercase'>
                             <h2 className='text-[8vw] leading-[0.8] pt-2.5'>{elem.movingText1}</h2>
-                            <div className='h-25 w-[17vw] flex-shrink-0 overflow-hidden rounded-full mx-5'>
+                            <div className={`flex-shrink-0 overflow-hidden  mx-5 ${idx === 2 ? 'h-30 w-30' : 'h-25 w-[17vw] rounded-full' }`}>
                                 <img className='h-full w-full object-cover' src={elem.imgSrc1} alt="1" />
                             </div>
 
                             <h2 className='text-[8vw] leading-[0.8] pt-2.5'>{elem.movingText1}</h2>
-                            <div className='h-25 w-[17vw] flex-shrink-0 overflow-hidden rounded-full mx-5'>
-                                <img className='h-full w-full object-cover' src={elem.imgSrc1} alt="1" />
+                            <div className={`flex-shrink-0 overflow-hidden  mx-5 ${idx === 2 ? 'h-30 w-30' : 'h-25 w-[17vw] rounded-full' }`}>
+                                <img className='h-full w-full object-cover' src={elem.imgSrc2} alt="1" />
                             </div>
                             <h2 className='text-[8vw] leading-[0.8] pt-2.5'>{elem.movingText1}</h2>
-                            <div className='h-25 w-[17vw] flex-shrink-0 overflow-hidden rounded-full mx-5'>
+                            <div className={`flex-shrink-0 overflow-hidden  mx-5 ${idx === 2 ? 'h-30 w-30' : 'h-25 w-[17vw] rounded-full' }`}>
                                 <img className='h-full w-full object-cover' src={elem.imgSrc1} alt="1" />
                             </div>
 
                             <h2 className='text-[8vw] leading-[0.8] pt-2.5'>{elem.movingText1}</h2>
-                            <div className='h-25 w-[17vw] flex-shrink-0 overflow-hidden rounded-full mx-5'>
-                                <img className='h-full w-full object-cover' src={elem.imgSrc1} alt="1" />
+                            <div className={`flex-shrink-0 overflow-hidden  mx-5 ${idx === 2 ? 'h-30 w-30' : 'h-25 w-[17vw] rounded-full' }`}>
+                                <img className='h-full w-full object-cover' src={elem.imgSrc2} alt="1" />
                             </div>
 
                         </div>
@@ -120,6 +121,7 @@ const FullScreenNav = () => {
 
                 })}
             </div>
+                <MontrealClock/>
         </div>
     )
 }
