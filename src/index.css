@@ -12,7 +12,7 @@
     display: none;
 }
 .runningText{
-    animation: moveText 5s linear  infinite ;
+    animation: moveText 10s linear  infinite ;
 }
 
 @keyframes moveText {
