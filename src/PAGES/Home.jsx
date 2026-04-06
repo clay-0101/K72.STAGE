@@ -1,5 +1,5 @@
 import React from 'react'
-import Video from '../COMPONENTS/home/video'
+import Video from '../COMPONENTS/home/Video'
 import HomeHeroText from '../COMPONENTS/home/HomeHeroText'
 import HomeBottomText from '../COMPONENTS/home/HomeBottomText'
 import MontrealClock from '../COMPONENTS/home/MontRealClock'
