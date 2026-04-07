@@ -6,11 +6,11 @@ import { BrowserRouter } from 'react-router-dom'
 import Stair from './COMPONENTS/common/Stair.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+
     <BrowserRouter>
     <Stair>
        <App />
     </Stair>
     </BrowserRouter>
-  </StrictMode>,
+
 )
