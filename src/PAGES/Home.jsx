@@ -10,7 +10,7 @@ const Home = ({homePresence}) => {
   return (
     <div 
     className='text-white'
-    style={{display:`${homePresence}`}}
+    // style={{display:`${homePresence}`}}
     >
         <div className='h-screen w-screen fixed'>
             <Video/>

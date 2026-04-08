@@ -7,7 +7,8 @@ import MontrealClock from '../home/MontRealClock'
 
 const FullScreenNav = ({ navPresence }) => {
 
-    const rotateRef = useRef(null)
+
+    const stairsRef = useRef(null)
     const arrOfRows = [
         {
             title: 'PROJECT',
@@ -81,61 +82,101 @@ const FullScreenNav = ({ navPresence }) => {
             ease: 'linear'
         })
     }
-    useGSAP(()=>{
-        gsap.set('.rotateDiv',{rotationX:90})
-        gsap.to('.rotateDiv',{
-            rotationX : 0,
-            transformOrigin: "top center",
-            delay:2,
-            duration:0.5,
-            stagger : 0.05
+useGSAP(() => {
+    const stairs = stairsRef.current.querySelectorAll('.stair')
+    
+    if (navPresence === "block") {
+        const tl = gsap.timeline()
+
+    
+        gsap.set('.containerDiv', { display: 'block' })
+        
+    
+        gsap.set(stairs, { y: '-100%' })
+        
+        
+        gsap.set('.rotateDiv', { rotationX: 90, opacity: 0 })
+
+        
+        tl.to(stairs, {
+            y: '0%', 
+            duration: 0.4,
+            stagger: { amount: 0.3 },
+            ease: "power3.inOut"
         })
-    })
+        
+        
+        tl.to('.fullNavDiv', { 
+            visibility: 'visible',
+            opacity: 1, 
+            duration: 0.1 
+        })
+        
+        .to('.rotateDiv', {
+            rotationX: 0,
+            opacity: 1,
+            transformOrigin: "top center",
+            duration: 0.5,
+            stagger: 0.05
+        }, "-=0.2")
+    }
+}, [navPresence])
 
     return (
-        <div
-            className=' fullNavDiv pt-[1px] bg-black h-screen w-full overflow-hidden  absolute bottom-0 left-0 z-99'
-            style={{ display: `` }}
-        >
-            <div className='rotateDiv mt-[12vw]'>
-                {arrOfRows.map((elem, idx) => {
-                    return <div
-                        key={idx}
-                        
-                        onMouseEnter={MouseEnterHandler}
-                        onMouseLeave={MouseLeaveHandler}
-                        className={`border-t-[0.5px]   border-[#b3b3b3af] font-[fontBold] relative relative overflow-hidden ${idx === arrOfRows.length - 1 ? 'border-b-1' : ''}`}>
+        <div className='containerDiv hidden'>
+            <div
+                className=' fullNavDiv pt-[1px] bg-black  h-screen w-full overflow-hidden  absolute bottom-0 left-0 z-99 invisible'
+            // style={{ display: `${navPresence}` }}
+            >
+                <div className='rotateDiv mt-[12vw]'>
+                    {arrOfRows.map((elem, idx) => {
+                        return <div
+                            key={idx}
+
+                            onMouseEnter={MouseEnterHandler}
+                            onMouseLeave={MouseLeaveHandler}
+                            className={`border-t-[0.5px]   border-[#b3b3b3af] font-[fontBold] relative relative overflow-hidden ${idx === arrOfRows.length - 1 ? 'border-b-1' : ''}`}>
 
 
-                        <h1 className='rotateDiv text-[8.5vw] text-center  text-white leading-[8.5vw]'>{elem.title}</h1>
-                        <div className='runningText   flex overflow-x-auto text-nowrap items-center bg-[#D3FD50] top-[0]  absolute h-[0%] uppercase'>
-                            <h2 className='text-[8vw] leading-[0.8] pt-2.5 text-black'>{elem.movingText1}</h2>
-                            <div className={`flex-shrink-0 overflow-hidden  mx-5 ${idx === 2 ? 'h-30 w-30' : 'h-25 w-[17vw] rounded-full'}`}>
-                                <img className='h-full w-full object-cover' src={elem.imgSrc1} alt="1" />
-                            </div>
+                            <h1 className='rotateDiv text-[8.5vw] text-center  text-white leading-[8.5vw]'>{elem.title}</h1>
+                            <div className='runningText   flex overflow-x-auto text-nowrap items-center bg-[#D3FD50] top-[0]  absolute h-[0%] uppercase'>
+                                <h2 className='text-[8vw] leading-[0.8] pt-2.5 text-black'>{elem.movingText1}</h2>
+                                <div className={`flex-shrink-0 overflow-hidden  mx-5 ${idx === 2 ? 'h-30 w-30' : 'h-25 w-[17vw] rounded-full'}`}>
+                                    <img className='h-full w-full object-cover' src={elem.imgSrc1} alt="1" />
+                                </div>
 
-                            <h2 className='text-[8vw] leading-[0.8] pt-2.5 text-black'>{elem.movingText1}</h2>
-                            <div className={`flex-shrink-0 overflow-hidden  mx-5 ${idx === 2 ? 'h-30 w-30' : 'h-25 w-[17vw] rounded-full'}`}>
-                                <img className='h-full w-full object-cover' src={elem.imgSrc2} alt="1" />
-                            </div>
-                            <h2 className='text-[8vw] leading-[0.8] pt-2.5 text-black'>{elem.movingText1}</h2>
-                            <div className={`flex-shrink-0 overflow-hidden  mx-5 ${idx === 2 ? 'h-30 w-30' : 'h-25 w-[17vw] rounded-full'}`}>
-                                <img className='h-full w-full object-cover' src={elem.imgSrc1} alt="1" />
-                            </div>
+                                <h2 className='text-[8vw] leading-[0.8] pt-2.5 text-black'>{elem.movingText1}</h2>
+                                <div className={`flex-shrink-0 overflow-hidden  mx-5 ${idx === 2 ? 'h-30 w-30' : 'h-25 w-[17vw] rounded-full'}`}>
+                                    <img className='h-full w-full object-cover' src={elem.imgSrc2} alt="1" />
+                                </div>
+                                <h2 className='text-[8vw] leading-[0.8] pt-2.5 text-black'>{elem.movingText1}</h2>
+                                <div className={`flex-shrink-0 overflow-hidden  mx-5 ${idx === 2 ? 'h-30 w-30' : 'h-25 w-[17vw] rounded-full'}`}>
+                                    <img className='h-full w-full object-cover' src={elem.imgSrc1} alt="1" />
+                                </div>
 
-                            <h2 className='text-[8vw] leading-[0.8] pt-2.5 text-black'>{elem.movingText1}</h2>
-                            <div className={`flex-shrink-0 overflow-hidden  mx-5 ${idx === 2 ? 'h-30 w-30' : 'h-25 w-[17vw] rounded-full'}`}>
-                                <img className='h-full w-full object-cover' src={elem.imgSrc2} alt="1" />
+                                <h2 className='text-[8vw] leading-[0.8] pt-2.5 text-black'>{elem.movingText1}</h2>
+                                <div className={`flex-shrink-0 overflow-hidden  mx-5 ${idx === 2 ? 'h-30 w-30' : 'h-25 w-[17vw] rounded-full'}`}>
+                                    <img className='h-full w-full object-cover' src={elem.imgSrc2} alt="1" />
+                                </div>
+
                             </div>
 
                         </div>
 
-                    </div>
-
-                })}
+                    })}
+                </div>
+                <MontrealClock />
             </div>
-            <MontrealClock />
-
+            <div
+                ref={stairsRef}
+                className='h-screen w-full fixed top-0 z-10 flex overflow-hidden pointer-events-none'
+            >
+                <div className='stair h-full w-1/5 bg-black'></div>
+                <div className='stair h-full w-1/5 bg-black'></div>
+                <div className='stair h-full w-1/5 bg-black'></div>
+                <div className='stair h-full w-1/5 bg-black'></div>
+                <div className='stair h-full w-1/5 bg-black'></div>
+            </div>
         </div>
     )
 }
