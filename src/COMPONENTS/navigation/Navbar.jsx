@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 
 
-const Navbar = ({setHomePresence,setNavPresence}) => {
+const Navbar = ({navPresence,setNavPresence}) => {
     const GreenNav = useRef(null)
     const location = useLocation().pathname
     const isHome = location === '/'
@@ -13,8 +13,9 @@ const Navbar = ({setHomePresence,setNavPresence}) => {
 
     const setState = ()=>{
         setNavPresence('block')
-        setHomePresence('none')
+        // setHomePresence('none')
     }
+    
    
 
     return (
@@ -30,6 +31,7 @@ const Navbar = ({setHomePresence,setNavPresence}) => {
                 <div
                     onClick={() => {
                        setState()
+                       
                     }}
                     onMouseEnter={() => {
                         GreenNav.current.style.height = '100%'
@@ -39,7 +41,8 @@ const Navbar = ({setHomePresence,setNavPresence}) => {
                         GreenNav.current.style.height = '0%'
                         setBgColor('white')
                     }}
-                    className='bg-black h-full w-[16vw] relative'>
+                    className='homeNav bg-black h-full w-[16vw] relative cursor-pointer transition-opacity duration-2000'
+                    style={{opacity : `${navPresence === 'hidden' ? 1 : 0}`}}>
                     <div className='text-white relative z-2 flex flex-col gap-1 items-end justify-center h-full w-full px-7'>
                         <div
                             className='h-[1.8px] w-14'

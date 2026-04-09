@@ -5,10 +5,11 @@ import { useRef } from 'react'
 import MontrealClock from '../home/MontRealClock'
 
 
-const FullScreenNav = ({ navPresence }) => {
+const FullScreenNav = ({ navPresence , setNavPresence}) => {
 
 
     const stairsRef = useRef(null)
+    const tl = useRef();
     const arrOfRows = [
         {
             title: 'PROJECT',
@@ -82,48 +83,54 @@ const FullScreenNav = ({ navPresence }) => {
             ease: 'linear'
         })
     }
-useGSAP(() => {
-    const stairs = stairsRef.current.querySelectorAll('.stair')
-    
-    if (navPresence === "block") {
-        const tl = gsap.timeline()
+    useGSAP(() => {
+        const stairs = stairsRef.current.querySelectorAll('.stair');
+         tl.current = gsap.timeline({ paused: true }); 
 
-    
-        gsap.set('.containerDiv', { display: 'block' })
-        
-    
-        gsap.set(stairs, { y: '-100%' })
-        
-        
-        gsap.set('.rotateDiv', { rotationX: 90, opacity: 0 })
+        // Timeline setup karo
+            tl.current        
+            .set('.containerDiv', { display: 'block' })
+            .set(stairs, { y: '-100%' })
+            .set('.rotateDiv', { rotationX: 90, opacity: 0 })
+            .to(stairs, {
+                y: '0%',
+                duration: 0.4,
+                stagger: { amount: 0.3 },
+                ease: "power3.inOut"
+            })
+            .to('.fullNavDiv', { visibility: 'visible', opacity: 1, duration: 0.1 })
+            .to('.crossDiv', { x: '0%' }, "<") 
+            .to('.rotateDiv', {
+                rotationX: 0,
+                opacity: 1,
+                transformOrigin: "top center",
+                duration: 0.5,
+                stagger: 0.05
+            }, "-=0.2");
 
-        
-        tl.to(stairs, {
-            y: '0%', 
-            duration: 0.4,
-            stagger: { amount: 0.3 },
-            ease: "power3.inOut"
-        })
-        
-        
-        tl.to('.fullNavDiv', { 
-            visibility: 'visible',
-            opacity: 1, 
-            duration: 0.1 
-        })
-        
-        .to('.rotateDiv', {
-            rotationX: 0,
-            opacity: 1,
-            transformOrigin: "top center",
-            duration: 0.5,
-            stagger: 0.05
-        }, "-=0.2")
-    }
-}, [navPresence])
+  
+
+    });
+    useGSAP(()=>{
+        if(navPresence === 'block'){
+            tl.current.play()
+        }else if (navPresence === 'hidden'){
+            tl.current.reverse()
+        }
+    },[navPresence])
 
     return (
         <div className='containerDiv hidden'>
+            <div 
+            onClick={()=>{
+               setNavPresence('hidden')  
+            }}
+            className='overflow-hidden h-[7vw] w-[7vw] absolute top-3 right-3 z-999'>
+                <div className='crossDiv group h-full w-full  flex justify-between translate-x-[8vw]'>
+                    <div className='child h-[10vw] w-[2px] -rotate-z-45 origin-top bg-white group-hover:bg-[#D3FD50] '></div>
+                    <div className='child h-[10vw] w-[2px] rotate-z-45 origin-top  bg-white group-hover:bg-[#D3FD50]'></div>
+                </div>
+            </div>
             <div
                 className=' fullNavDiv pt-[1px] bg-black  h-screen w-full overflow-hidden  absolute bottom-0 left-0 z-99 invisible'
             // style={{ display: `${navPresence}` }}

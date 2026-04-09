@@ -10,7 +10,7 @@ import { useState } from 'react'
 
 const App = () => {
 
-const [navPresence, setNavPresence] = useState('none')
+const [navPresence, setNavPresence] = useState('hidden')
 const [homePresence, setHomePresence] = useState('block')
 
 // console.log(navPresence)
@@ -18,8 +18,8 @@ const [homePresence, setHomePresence] = useState('block')
   return (
     <div className='h-screen w-full'>
        
-        <Navbar setNavPresence={setNavPresence} setHomePresence={setHomePresence}/>
-        <FullScreenNav navPresence={navPresence}/>
+        <Navbar setNavPresence={setNavPresence} navPresence={navPresence}/>
+        <FullScreenNav navPresence={navPresence} setNavPresence={setNavPresence}/>
       <Routes>
         <Route path='/' element={<Home homePresence={homePresence}/>} />
         <Route path='/projects' element={<Project />} />
