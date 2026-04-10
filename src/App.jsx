@@ -8,6 +8,7 @@ import FullScreenNav from './COMPONENTS/navigation/FullScreenNav'
 import { useState } from 'react'
 
 
+
 const App = () => {
 
 const [navPresence, setNavPresence] = useState('hidden')
@@ -17,14 +18,14 @@ const [homePresence, setHomePresence] = useState('block')
 // console.log(homePresence)
   return (
     <div className='h-screen w-full'>
-       
+       <Project />
         <Navbar setNavPresence={setNavPresence} navPresence={navPresence}/>
-        <FullScreenNav navPresence={navPresence} setNavPresence={setNavPresence}/>
+        {/* <FullScreenNav navPresence={navPresence} setNavPresence={setNavPresence}/>
       <Routes>
         <Route path='/' element={<Home homePresence={homePresence}/>} />
         <Route path='/projects' element={<Project />} />
         <Route path='/agence' element={<Agence />} />
-      </Routes>
+      </Routes> */}
     </div>
   )
 }
