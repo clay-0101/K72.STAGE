@@ -1,81 +1,80 @@
 import React from 'react'
+import ProjectsCard from '../COMPONENTS/project/ProjectsCard'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Project = () => {
+  let imgObj = [
+    {
+      image1: './projets1.png',
+      image2: './projets2.png'
+    },
+    {
+      image1: './projets3.jpg',
+      image2: './projets4.jpg'
+    },
+    {
+      image1: './projets5.jpg',
+      image2: './projets6.jpg'
+    },
+    {
+      image1: './projets7.jpg',
+      image2: './projets8.jpg'
+    },
+    {
+      image1: './projets9.jpg',
+      image2: './projets10.jpg'
+    },
+    {
+      image1: './projets11.jpg',
+      image2: './projets12.jpg'
+    },
+    {
+      image1: './projets13.jpg',
+      image2: './projets14.jpg'
+    },
+    {
+      image1: './projets15.jpg',
+      image2: './projets16.jpg'
+    },
+    {
+      image1: './projets17.jpg',
+      image2: ''
+    },
+
+  ]
+ gsap.registerPlugin(ScrollTrigger)
+  useGSAP(()=>{
+    gsap.from('.hero',{
+      height : '50px',
+      stagger : {
+        amount : 0.1
+      },
+      scrollTrigger:{
+        trigger : '.mainHero',
+   
+        start : 'top 100%',
+        end : 'top -150%',
+        scrub : true
+      }
+
+    })
+  })
   return (
     <div>
-      <div className='bg-red-200 p-[10px] '>
+      <div className='p-[10px] '>
         <h1 className='uppercase font-[fontBold] text-[13vw] mt-[42vh] '>Projets<sup className='text-[2.5vw] align-super relative -top-[3vw] '>17</sup></h1>
       </div>
-      <div className='bg-gray-500 h-[650px] w-full flex gap-[0.7vw] pt-[0.5vw] px-[0.5vw] -mt-20'>
-        <div className='h-full w-1/2 bg-blue-200'>
-        <img className='h-full w-full object-cover' src="./projets1.png" alt="" />
-        </div>
-        <div className='h-full w-1/2 bg-green-200'>
-        <img className='h-full w-full object-cover' src="./projets2.png" alt="" />
-        </div>
+      <div className='mainHero -mt-20'>
+        {imgObj.map((elem) => {
+          return <div className='hero h-[600px] w-full flex gap-[0.7vw] pt-[0.5vw] px-[0.5vw]'>
+            <ProjectsCard img1={elem.image1} img2={elem.image2}/>
+          </div>
+        })}
+
       </div>
-      <div className='bg-gray-500 h-[650px] w-full flex gap-[0.7vw] pt-[0.5vw] px-[0.5vw]'>
-        <div className='h-full w-1/2 bg-blue-200'>
-        <img className='h-full w-full object-cover' src="./projets3.jpg" alt="" />
-        </div>
-        <div className='h-full w-1/2 bg-green-200'>
-        <img className='h-full w-full object-cover' src="./projets4.jpg" alt="" />
-        </div>
-      </div>
-      <div className='bg-gray-500 h-[650px] w-full flex gap-[0.7vw] pt-[0.5vw] px-[0.5vw]'>
-        <div className='h-full w-1/2 bg-blue-200'>
-        <img className='h-full w-full object-cover' src="./projets5.jpg" alt="" />
-        </div>
-        <div className='h-full w-1/2 bg-green-200'>
-        <img className='h-full w-full object-cover' src="./projets6.jpg" alt="" />
-        </div>
-      </div>
-      <div className='bg-gray-500 h-[650px] w-full flex gap-[0.7vw] pt-[0.5vw] px-[0.5vw]'>
-        <div className='h-full w-1/2 bg-blue-200'>
-         <img className='h-full w-full object-cover' src="./projets7.jpg" alt="" />
-        </div>
-        <div className='h-full w-1/2 bg-green-200'>
-         <img className='h-full w-full object-cover' src="./projets8.jpg" alt="" />
-        </div>
-      </div>
-      <div className='bg-gray-500 h-[650px] w-full flex gap-[0.7vw] pt-[0.5vw] px-[0.5vw]'>
-        <div className='h-full w-1/2 bg-blue-200'>
-         <img className='h-full w-full object-cover' src="./projets9.jpg" alt="" />
-        </div>
-        <div className='h-full w-1/2 bg-green-200'>
-         <img className='h-full w-full object-cover' src="./projets10.jpg" alt="" />
-        </div>
-      </div>
-      <div className='bg-gray-500 h-[650px] w-full flex gap-[0.7vw] pt-[0.5vw] px-[0.5vw]'>
-        <div className='h-full w-1/2 bg-blue-200'>
-         <img className='h-full w-full object-cover' src="./projets11.jpg" alt="" />
-        </div>
-        <div className='h-full w-1/2 bg-green-200'>
-         <img className='h-full w-full object-cover' src="./projets12.jpg" alt="" />
-        </div>
-      </div>
-      <div className='bg-gray-500 h-[650px] w-full flex gap-[0.7vw] pt-[0.5vw] px-[0.5vw]'>
-        <div className='h-full w-1/2 bg-blue-200'>
-         <img className='h-full w-full object-cover' src="./projets13.jpg" alt="" />
-        </div>
-        <div className='h-full w-1/2 bg-green-200'>
-         <img className='h-full w-full object-cover' src="./projets14.jpg" alt="" />
-        </div>
-      </div>
-      <div className='bg-gray-500 h-[650px] w-full flex gap-[0.7vw] pt-[0.5vw] px-[0.5vw]'>
-        <div className='h-full w-1/2 bg-blue-200'>
-         <img className='h-full w-full object-cover' src="./projets15.jpg" alt="" />
-        </div>
-        <div className='h-full w-1/2 bg-green-200'>
-         <img className='h-full w-full object-cover' src="./projets16.jpg" alt="" />
-        </div>
-      </div>
-      <div className='bg-gray-500 h-[650px] w-full flex gap-[0.7vw] pt-[0.5vw] px-[0.5vw]'>
-        <div className='h-full w-1/2 bg-blue-200'>
-         <img className='h-full w-full object-cover' src="./projets17.jpg" alt="" />
-        </div>
-        <div className='h-full w-1/2 bg-green-200'></div>
-      </div>
+
     </div>
   )
 }

@@ -18,14 +18,14 @@ const [homePresence, setHomePresence] = useState('block')
 // console.log(homePresence)
   return (
     <div className='h-screen w-full'>
-       <Project />
+       {/* <Project /> */}
         <Navbar setNavPresence={setNavPresence} navPresence={navPresence}/>
-        {/* <FullScreenNav navPresence={navPresence} setNavPresence={setNavPresence}/>
+        <FullScreenNav navPresence={navPresence} setNavPresence={setNavPresence}/>
       <Routes>
         <Route path='/' element={<Home homePresence={homePresence}/>} />
         <Route path='/projects' element={<Project />} />
         <Route path='/agence' element={<Agence />} />
-      </Routes> */}
+      </Routes>
     </div>
   )
 }
