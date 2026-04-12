@@ -33,7 +33,7 @@ function MontrealClock() {
 
   // 3. UI: Jo time state mein save hua hai, use HTML (JSX) ke andar display kar rahe hain.
   return (
-    <div className="uppercase font-[fontBold] text-xl h-10 flex items-end gap-3 absolute text-white bottom-[3px] left-0">
+    <div className="hidden md:flex uppercase font-[fontBold] text-xl h-10  items-end gap-3 absolute text-white bottom-[3px] left-0">
       <Globe size={40} strokeWidth={1} />
       <p className="self-center">Montréal_{time} </p>
     </div>
