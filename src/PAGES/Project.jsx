@@ -3,6 +3,7 @@ import ProjectsCard from '../COMPONENTS/project/ProjectsCard'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import ProjectBottom from '../COMPONENTS/project/ProjectBottom';
 
 const Project = () => {
   let imgObj = [
@@ -66,7 +67,7 @@ const Project = () => {
       <div className='p-[10px] '>
         <h1 className='uppercase font-[fontBold] text-[13vw] mt-[42vh] '>Projets<sup className='text-[2.5vw] align-super relative -top-[3vw] '>17</sup></h1>
       </div>
-      <div className='mainHero -mt-20'>
+      <div className='mainHero -mt-20 mb-5'>
         {imgObj.map((elem) => {
           return <div className='hero h-[600px] w-full flex gap-[0.7vw] pt-[0.5vw] px-[0.5vw]'>
             <ProjectsCard img1={elem.image1} img2={elem.image2}/>
@@ -74,6 +75,7 @@ const Project = () => {
         })}
 
       </div>
+      <ProjectBottom/>
 
     </div>
   )
