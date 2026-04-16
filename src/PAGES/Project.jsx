@@ -5,7 +5,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ProjectBottom from '../COMPONENTS/project/ProjectBottom';
 
-const Project = () => {
+const Project = ({ setNavibarH }) => {
   let imgObj = [
     {
       image1: './projets1.png',
@@ -45,37 +45,50 @@ const Project = () => {
     },
 
   ]
- gsap.registerPlugin(ScrollTrigger)
-  useGSAP(()=>{
-    gsap.from('.hero',{
-      height : '50px',
-      stagger : {
-        amount : 0.1
+  gsap.registerPlugin(ScrollTrigger)
+  useGSAP(() => {
+    gsap.from('.hero', {
+      height: '50px',
+      stagger: {
+        amount: 0.1
       },
-      scrollTrigger:{
-        trigger : '.mainHero',
-   
-        start : 'top 100%',
-        end : 'top -150%',
-        scrub : true
+      scrollTrigger: {
+        trigger: '.mainHero',
+
+        start: 'top 100%',
+        end: 'top -150%',
+        scrub: true
       }
 
     })
   })
   return (
     <div>
+      <div className='projectTopDiv fixed z-99 bg-white -top-30 opacity-0 transition-all duration-300 left-0 border-black border-2 w-full h-15'></div>
       <div className='p-[10px] '>
         <h1 className='uppercase font-[fontBold] text-[13vw] mt-[42vh] '>Projets<sup className='text-[2.5vw] align-super relative -top-[3vw] '>17</sup></h1>
       </div>
-      <div className='mainHero -mt-20 mb-3'>
+      <div
+        className='mainHero -mt-20 mb-3'>
         {imgObj.map((elem) => {
-          return <div className='hero h-[600px] w-full flex gap-[0.7vw] pt-[0.5vw] px-[0.5vw]'>
-            <ProjectsCard img1={elem.image1} img2={elem.image2}/>
+          return <div
+            onMouseEnter={() => {
+              setNavibarH('md:w-[6.5vw]')
+              document.querySelector('.projectTopDiv').style.top = '3.4vw'
+              document.querySelector('.projectTopDiv').style.opacity = '100'
+            }}
+            onMouseLeave={() => {
+              setNavibarH('md:w-[9vw]')
+              document.querySelector('.projectTopDiv').style.top = '-4vw'
+              document.querySelector('.projectTopDiv').style.opacity = '0'
+            }}
+            className='hero h-[600px] w-full flex gap-[0.7vw] pt-[0.5vw] px-[0.5vw]'>
+            <ProjectsCard img1={elem.image1} img2={elem.image2} />
           </div>
         })}
 
       </div>
-      <ProjectBottom/>
+      <ProjectBottom />
 
     </div>
   )
